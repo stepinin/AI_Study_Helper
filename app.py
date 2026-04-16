@@ -40,24 +40,10 @@ def test():
     topic = request.json.get("topic", "")
 
     prompt = f"""
-Создай тест из 3 вопросов по теме {topic}.
-Формат строго:
+Сделай 3 коротких тестовых вопроса по теме: {topic}
 
-Вопрос 1
-A)
-B)
-C)
-D)
-Ответ: X
-
-Вопрос 2
-A)
-B)
-C)
-D)
-Ответ: X
-
-Вопрос 3
+Формат:
+Вопрос
 A)
 B)
 C)
@@ -95,6 +81,8 @@ D)
         "questions": questions,
         "answers": answers
     })
-
+    except Exception as e:
+        print("TEST ERROR:", e)
+        return jsonify({"questions": ["❌ Ошибка генерации теста"]})
 if __name__ == "__main__":
     app.run()
