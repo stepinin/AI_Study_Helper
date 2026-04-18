@@ -8,26 +8,22 @@ mode = page
 let main = document.getElementById("main")
 let topbar = document.getElementById("topbar")
 
-if(page === "home"){
 topbar.style.display = "flex"
-main.innerHTML = `<h1>Главная страница</h1><div id="chat" class="chat"></div>`
-addBot("Добро пожаловать! 👋")
-addBot("<-- Выберите раздел слева")
-addBot("Или можем просто пообщаться")
+
+if(page === "home"){
+main.innerHTML = `<h1>Главная</h1><div id="chat" class="chat"></div>`
+addBot("Добро пожаловать 👋")
 }
 
 if(page === "explain"){
-topbar.style.display = "flex"
-main.innerHTML = `<h1>Объяснение темы</h1><div id="chat" class="chat"></div>`
-addBot("Введите тему для объяснения")
+main.innerHTML = `<h1>Объяснение</h1><div id="chat" class="chat"></div>`
+addBot("Введите тему")
 }
 
 if(page === "test"){
-topbar.style.display = "flex"
-main.innerHTML = `<h1>Тесты</h1><div id="chat" class="chat"></div>`
-addBot("Введите тему для теста")
+main.innerHTML = `<h1>Тест</h1><div id="chat" class="chat"></div>`
+addBot("Введите тему")
 }
-
 }
 
 function addMessage(text, type){
@@ -47,7 +43,7 @@ function addBot(text){ addMessage(text, "bot") }
 async function send(){
 
 let input = document.getElementById("input")
-let text = input.value
+let text = input.value.trim()
 
 if(!text) return
 
@@ -58,7 +54,7 @@ addBot("⏳ Думаю... Подождите...")
 
 let url = (mode === "test") ? "/test" : "/explain"
 
-let res = await fetch(url, {
+let res = await fetch(url,{
 method:"POST",
 headers:{"Content-Type":"application/json"},
 body:JSON.stringify({topic:text})
@@ -66,11 +62,11 @@ body:JSON.stringify({topic:text})
 
 let data
 
-try {
-    data = await res.json()
-} catch {
-    addBot("❌ Ошибка сервера")
-    return
+try{
+data = await res.json()
+}catch{
+addBot("❌ Ошибка сервера")
+return
 }
 
 let chat = document.getElementById("chat")
@@ -78,15 +74,10 @@ chat.removeChild(chat.lastChild)
 
 if(mode === "test"){
 
-correctAnswers = data.answers
+correctAnswers = data.answers || []
 
-data.questions.forEach((q, i) => {
-addBot(`
-${q}
-
-Введите ответ:
-<input id="q${i}">
-`)
+data.questions.forEach((q,i)=>{
+addBot(`${q}<br><input id="q${i}" placeholder="A/B/C/D">`)
 })
 
 addBot(`<button onclick="finishTest()">Завершить тест</button>`)
@@ -94,24 +85,22 @@ addBot(`<button onclick="finishTest()">Завершить тест</button>`)
 }else{
 addBot(data.answer)
 }
-
 }
 
 function finishTest(){
 
 let score = 0
 
-for(let i = 0; i < correctAnswers.length; i++){
+for(let i=0;i<correctAnswers.length;i++){
 
 let user = document.getElementById("q"+i).value.trim().toUpperCase()
 
 if(user === correctAnswers[i]){
 score++
 }
-
 }
 
-addBot(`🏆 Результат: ${score} / ${correctAnswers.length} \n Правильные ответы: \n 1. ${correctAnswers[0]} \n 2. ${correctAnswers[1]} \n 3. ${correctAnswers[2]}`)
+addBot(`🏆 ${score}/${correctAnswers.length}<br>Ответы: ${correctAnswers.join(", ")}`)
 }
 
 window.onload = () => loadPage("home")
