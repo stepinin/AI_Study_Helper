@@ -13,20 +13,17 @@ def ask_ai(prompt):
     try:
         res = client.chat.completions.create(
             model="deepseek-ai/deepseek-v3.2",
-            messages=[{"role": "user", "content": prompt}]
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=500
         )
         return res.choices[0].message.content
     except Exception as e:
         print("FULL ERROR:", e)
         return "❌ Ошибка ИИ"
-    
-    
-@app.route("/" or "/home") 
+
+@app.route("/")
 def home():
     return render_template("index.html")
-    topic = request.json.get("topic", "")
-    answer = ask_ai(f"{topic}")
-    return jsonify({"answer": answer})
 
 @app.route("/explain", methods=["POST"])
 def explain():
@@ -34,16 +31,17 @@ def explain():
     answer = ask_ai(f"Объясни простым языком: {topic}")
     return jsonify({"answer": answer})
 
-
 @app.route("/test", methods=["POST"])
 def test():
-    topic = request.json.get("topic", "")
 
-    prompt = f"""
+    try:
+        topic = request.json.get("topic", "")
+
+        prompt = f"""
 Сделай 3 коротких тестовых вопроса по теме: {topic}
 
 Формат:
-Вопрос
+Вопрос 1
 A)
 B)
 C)
@@ -51,35 +49,46 @@ D)
 Ответ: X
 """
 
-    text = ask_ai(prompt)
-    print(text)
-    questions = []
-    answers = []
+        text = ask_ai(prompt)
 
-    blocks = text.split("Вопрос")
+        questions = []
+        answers = []
 
-    for block in blocks:
-        if not block.strip():
-            continue
+        blocks = text.split("Вопрос")
 
-        full = "Вопрос" + block
+        for block in blocks:
+            block = block.strip()
+            if not block:
+                continue
 
-        correct = "A"
-        lines = full.split("\n")
+            full = "Вопрос " + block
 
-        clean = []
-        for line in lines:
-            if "Ответ" in line:
-                correct = line.split(":")[-1].strip()
-            else:
-                clean.append(line)
-        questions.append("\n".join(clean))
-        answers.append(correct)
-    if '1' not in questions[0]:
-        questions.pop(0)
-    return jsonify({
-        "questions": questions,
-        "answers": answers
-    })
+            correct = "A"
+            clean = []
+
+            for line in full.split("\n"):
+                if "Ответ" in line:
+                    correct = line.split(":")[-1].strip()
+                else:
+                    clean.append(line)
+
+            q = "\n".join(clean).strip()
+
+            if len(q) > 10:
+                questions.append(q)
+                answers.append(correct)
+
+        return jsonify({
+            "questions": questions,
+            "answers": answers
+        })
+
+    except Exception as e:
+        print("TEST ERROR:", e)
+        return jsonify({
+            "questions": ["❌ Ошибка генерации"],
+            "answers": []
+        })
+        
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
