@@ -14,7 +14,8 @@ def ask_ai(prompt):
         res = client.chat.completions.create(
             model="deepseek-ai/deepseek-v3.2",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=500
+            max_tokens=200,
+            timeout=10
         )
         return res.choices[0].message.content
     except Exception as e:
