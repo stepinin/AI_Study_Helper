@@ -4,19 +4,28 @@ import os
 
 app = Flask(__name__)
 
-client = OpenAI(
-    base_url="https://integrate.api.nvidia.com/v1",
-    api_key=os.environ.get("API_KEY")
-)
+new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: os.environ.get("API_KEY"),
+  defaultHeaders: {
+    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
+    "X-OpenRouter-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
+  },
+});
 
 def ask_ai(prompt):
     try:
-        res = client.chat.completions.create(
-            model="deepseek-ai/deepseek-v3.2",
-            messages=[{"role": "user", "content": prompt}],
-            max_tokens=200,
-            timeout=10
-        )
+        res = await openai.chat.completions.create({
+            model: "openrouter/elephant-alpha",
+            messages: [
+      {
+        "role": "user",
+        "content": prompt
+      }
+    ]
+  });
+
+  console.log(completion.choices[0].message);
         return res.choices[0].message.content
     except Exception as e:
         print("FULL ERROR:", e)
