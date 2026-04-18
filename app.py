@@ -7,21 +7,7 @@ app = Flask(__name__)
 client = OpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=os.environ.get("API_KEY"),
-    default_headers={
-        "HTTP-Referer": "http://localhost:5000", 
-        "X-OpenRouter-Title": "AI Study Helper"
-    }
 )
-
-response = client.chat.completions.create(
-    model="openrouter/elephant-alpha",
-    messages=[
-        {"role": "user", "content": "What is the meaning of life?"}
-    ],
-    max_tokens=300
-)
-
-print(response.choices[0].message.content)
 
 def ask_ai(prompt):
     try:
