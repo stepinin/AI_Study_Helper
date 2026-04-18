@@ -4,33 +4,41 @@ import os
 
 app = Flask(__name__)
 
-new OpenAI({
-  baseURL: "https://openrouter.ai/api/v1",
-  apiKey: os.environ.get("API_KEY"),
-  defaultHeaders: {
-    "HTTP-Referer": "<YOUR_SITE_URL>", // Optional. Site URL for rankings on openrouter.ai.
-    "X-OpenRouter-Title": "<YOUR_SITE_NAME>", // Optional. Site title for rankings on openrouter.ai.
-  },
-});
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=os.environ.get("API_KEY"),
+    default_headers={
+        "HTTP-Referer": "http://localhost:5000", 
+        "X-OpenRouter-Title": "AI Study Helper"
+    }
+)
+
+response = client.chat.completions.create(
+    model="openrouter/elephant-alpha",
+    messages=[
+        {"role": "user", "content": "What is the meaning of life?"}
+    ],
+    max_tokens=300
+)
+
+print(response.choices[0].message.content)
 
 def ask_ai(prompt):
     try:
-        res = await openai.chat.completions.create({
-            model: "openrouter/elephant-alpha",
-            messages: [
-      {
-        "role": "user",
-        "content": prompt
-      }
-    ]
-  });
+        response = client.chat.completions.create(
+            model="openrouter/elephant-alpha",
+            messages=[
+                {"role": "user", "content": prompt}
+            ],
+            max_tokens=300
+        )
 
-  console.log(completion.choices[0].message);
-        return res.choices[0].message.content
+        return response.choices[0].message.content
+
     except Exception as e:
-        print("FULL ERROR:", e)
+        print("ERROR:", e)
         return "❌ Ошибка ИИ"
-
+      
 @app.route("/")
 def home():
     return render_template("index.html")
