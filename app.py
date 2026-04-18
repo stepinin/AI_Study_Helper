@@ -81,8 +81,5 @@ D)
         "questions": questions,
         "answers": answers
     })
-except Exception as e:
-    print("TEST ERROR:", e)
-    return jsonify({"questions": ["❌ Ошибка генерации теста"]})
 if __name__ == "__main__":
     app.run()
