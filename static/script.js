@@ -35,6 +35,10 @@ main.innerHTML = `
 `
 addBot("Введите тему для теста")
 }
+let sidebar = document.getElementById("sidebar")
+if(window.innerWidth < 768){
+sidebar.classList.remove("active")
+}
 }
 
 function addMessage(text, type){
@@ -123,6 +127,11 @@ if(btn){
 btn.style.display = "none"
 }
 addBot(`🏆 Результат: ${score} / ${correctAnswers.length} \n Правильные ответы: \n 1. ${correctAnswers[0]} \n 2. ${correctAnswers[1]} \n 3. ${correctAnswers[2]}`)
+}
+
+function toggleMenu(){
+let sidebar = document.getElementById("sidebar")
+sidebar.classList.toggle("active")
 }
 
 window.onload = () => loadPage("home")
