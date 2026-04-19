@@ -11,18 +11,29 @@ let topbar = document.getElementById("topbar")
 topbar.style.display = "flex"
 
 if(page === "home"){
-main.innerHTML = `<h1>Главная</h1><div id="chat" class="chat"></div>`
-addBot("Добро пожаловать 👋")
+main.innerHTML = `
+<h1>💬 Чат</h1>
+<div id="chat" class="chat"></div>
+`
+
+addBot("Привет! 👋")
+addBot("Можешь задать любой вопрос")
 }
 
 if(page === "explain"){
-main.innerHTML = `<h1>Объяснение</h1><div id="chat" class="chat"></div>`
-addBot("Введите тему")
+main.innerHTML = `
+<h1>📚 Объяснение</h1>
+<div id="chat" class="chat"></div>
+`
+addBot("Введи тему, я объясню просто")
 }
 
 if(page === "test"){
-main.innerHTML = `<h1>Тест</h1><div id="chat" class="chat"></div>`
-addBot("Введите тему")
+main.innerHTML = `
+<h1>❓ Тест</h1>
+<div id="chat" class="chat"></div>
+`
+addBot("Введи тему для теста")
 }
 }
 
@@ -52,12 +63,19 @@ input.value = ""
 
 addBot("⏳ Думаю... Подождите...")
 
-let url = (mode === "test") ? "/test" : "/explain"
+let url = "/chat"
+
+if(mode === "explain") url = "/explain"
+if(mode === "test") url = "/test"
 
 let res = await fetch(url,{
 method:"POST",
 headers:{"Content-Type":"application/json"},
-body:JSON.stringify({topic:text})
+body:JSON.stringify(
+    mode === "home"
+    ? {message: text}
+    : {topic: text}
+)
 })
 
 let data
@@ -85,22 +103,6 @@ addBot(`<button onclick="finishTest()">Завершить тест</button>`)
 }else{
 addBot(data.answer)
 }
-}
-
-function finishTest(){
-
-let score = 0
-
-for(let i=0;i<correctAnswers.length;i++){
-
-let user = document.getElementById("q"+i).value.trim().toUpperCase()
-
-if(user === correctAnswers[i]){
-score++
-}
-}
-
-addBot(`🏆 ${score}/${correctAnswers.length}<br>Ответы: ${correctAnswers.join(", ")}`)
 }
 
 window.onload = () => loadPage("home")
