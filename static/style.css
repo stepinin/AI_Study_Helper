@@ -124,6 +124,22 @@ button{
     padding-top: 20px;
 }
 
+.bx-wrapper {
+   width: 775px;
+}
+
+.bx-next{
+    visibility: hidden;
+}
+
+.bx-prev{
+    visibility: hidden;
+}
+
+.bx-pager-link{
+    visibility: hidden;
+}
+    
 @media (max-width: 768px) {
 
     .burger {
