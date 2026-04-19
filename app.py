@@ -28,6 +28,9 @@ def ask_ai(prompt):
 @app.route("/")
 def home():
     return render_template("index.html")
+    topic = request.json.get("topic", "")
+    answer = ask_ai(f"{topic}")
+    return jsonify({"answer": answer})
 
 @app.route("/explain", methods=["POST"])
 def explain():
