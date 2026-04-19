@@ -110,6 +110,19 @@ h1{
     background-color: #1e293b;
 }
 
+button{
+    border-radius: 10px;
+    background: #2563eb;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+
+#q0, #q1, #q2{
+    background-color: white;
+    color: black;
+} 
+
 @media (max-width: 768px) {
 
     .burger {
