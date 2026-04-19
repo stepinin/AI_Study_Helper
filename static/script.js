@@ -130,8 +130,10 @@ addBot(`🏆 Результат: ${score} / ${correctAnswers.length} \n Прав
 }
 
 function toggleMenu(){
+    
 let sidebar = document.getElementById("sidebar")
 sidebar.classList.toggle("active")
+    
 }
 
 window.onload = () => loadPage("home")
