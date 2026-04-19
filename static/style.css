@@ -1,3 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Datatype:wght@100..900&family=Itim&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Datatype', monospace;
+    background: #0f172a;
+    color: white;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: #0d0e11;
+    padding: 20px;
+    font-size: 20px;
+    font-family: 'Itim', cursive;
+    padding-top: 40px;
+}
+
+.sidebar div {
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #1e293b;
+}
+
+.sidebar div:hover {
+    background: #2563eb;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.topbar {
+    display: flex;
+    padding: 15px;
+}
+
+.topbar input {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    width: 1550px;
+}
+
+.topbar button {
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #2563eb;
+    border: none;
+    color: white;
+}
+
+.chat {
+    padding: 20px;
+    font-size: 20px;
+}
+
+button{
+    border-radius: 10px;
+    background: #2563eb;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+
+.message {
+    max-width: 60%;
+    padding: 14px;
+    margin: 10px 0;
+    border-radius: 12px;
+    white-space: pre-line;
+    font-size: 20px;
+}
+
+.user {
+    background: #2563eb;
+    margin-left: auto;
+}
+
+.bot {
+    background: #1e293b;
+}
+
+input {
+    margin-top: 5px;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    font-size: 20px;
+    background-color: #1e293b;
+    color:aliceblue;
+}
+
+footer{
+    padding-left: 200px;
+    background-color: #0c204e;
+    font-size: 20px;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    font-size:50px;
+    background-color: #1e293b;
+}
+
+p{
+    font-size: 40px;
+    text-align: center;
+}
+
+.logo{
+    padding-left:40px;
+    font-size: 40px;
+    background-color: #0c204e;
+    height: 80px;
+    padding-top: 20px;
+}
+
+#q0, #q1, #q2{
+    background-color: white;
+    color: black;
+} 
+
 @media (max-width: 900px) {
     .sidebar {
         width: 180px;
