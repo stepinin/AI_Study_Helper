@@ -133,36 +133,57 @@ p{
     color: black;
 } 
 
-@media (max-width: 1650px){
-    .topbar input {
-        width: 1200px;
+@media (max-width: 900px) {
+    .sidebar {
+        width: 180px;
+        padding: 15px;
     }
-    .chat{
-        width: width - 400px;
-    }
-}
 
-@media (max-width: 1573px){
-    .topbar input {
-            width: 1000px;
-        }
-}
-
-@media (max-width: 1375px){
-    .topbar input {
-            width: 600px;
-        }
-    h1{
-        font-size: 30px;
+    .message {
+        max-width: 85%;
     }
 }
 
-@media (max-width: 967px){
-    .topbar input {
-            width: 400px;
-        }
-    font-size: 20px;
-}
+@media (max-width: 600px) {
 
-@media (max-width: 777px){
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+        padding: 10px;
+        border-right: none;
+        border-bottom: 1px solid #1e293b;
+    }
+
+    .sidebar div {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    #topbar {
+        padding: 10px;
+    }
+
+    #input {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    button {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+
+    .message {
+        max-width: 95%;
+        font-size: 14px;
+    }
+
+    #main {
+        padding: 10px;
+    }
 }
