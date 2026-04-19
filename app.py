@@ -32,7 +32,7 @@ def home():
 @app.route("/chat", methods=["POST"])
 def chat():
     text = request.json.get("message", "")
-    answer = ask_ai(text)
+    answer = ask_ai(text + " (Пиши БЕЗ символов # и *)")
     return jsonify({"answer": answer})
 
 @app.route("/explain", methods=["POST"])
