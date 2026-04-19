@@ -109,8 +109,7 @@ button{
     background: #2563eb;
     border: none;
     color: white;
-    font-size: 20px;
-}
+    padding: 10px;
 
 #q0, #q1, #q2{
     background-color: white;
