@@ -16,8 +16,8 @@ main.innerHTML = `
 <div id="chat" class="chat"></div>
 `
 
-addBot("Привет! 👋")
-addBot("Можешь задать любой вопрос")
+addBot("Приветствую! 👋")
+addBot("Можете задать любой вопрос")
 }
 
 if(page === "explain"){
@@ -25,7 +25,7 @@ main.innerHTML = `
 <h1>📚 Объяснение</h1>
 <div id="chat" class="chat"></div>
 `
-addBot("Введи тему, я объясню просто")
+addBot("Введите тему, я объясню просто")
 }
 
 if(page === "test"){
@@ -33,7 +33,7 @@ main.innerHTML = `
 <h1>❓ Тест</h1>
 <div id="chat" class="chat"></div>
 `
-addBot("Введи тему для теста")
+addBot("Введите тему для теста")
 }
 }
 
