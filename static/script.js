@@ -1,6 +1,15 @@
 let mode = "home"
 let correctAnswers = []
 
+$(document).ready(function () {
+    $('.slider').bxSlider({
+        captions: true, 
+        nextText: '',
+        prevText: '',
+        easing: 'jswing'
+    });
+});
+
 function loadPage(page){
 
 mode = page
