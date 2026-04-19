@@ -25,11 +25,10 @@ def ask_ai(prompt):
         print("ERROR:", e)
         return "❌ Ошибка ИИ"
       
-@app.route("/")
-def home():
-    return render_template("index.html")
-    topic = request.json.get("topic", "")
-    answer = ask_ai(f"{topic}")
+@app.route("/chat", methods=["POST"])
+def chat():
+    text = request.json.get("message", "")
+    answer = ask_ai(text)
     return jsonify({"answer": answer})
 
 @app.route("/explain", methods=["POST"])
