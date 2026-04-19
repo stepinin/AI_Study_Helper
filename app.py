@@ -35,7 +35,9 @@ def home():
 @app.route("/explain", methods=["POST"])
 def explain():
     topic = request.json.get("topic", "")
-    answer = ask_ai(f"Объясни простым языком: {topic}")
+    answer = ask_ai(f"Объясни тему: {topic}
+Пиши БЕЗ символов # и *
+")
     return jsonify({"answer": answer})
 
 @app.route("/test", methods=["POST"])
@@ -54,6 +56,7 @@ B)
 C)
 D)
 Ответ: X
+Пиши БЕЗ символов # и *
 """
 
         text = ask_ai(prompt)
@@ -84,7 +87,8 @@ D)
             if len(q) > 10:
                 questions.append(q)
                 answers.append(correct)
-
+            if '1' not in questions[0]:
+                questions.pop(0)
         return jsonify({
             "questions": questions,
             "answers": answers
