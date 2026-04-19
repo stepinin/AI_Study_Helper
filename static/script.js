@@ -105,4 +105,21 @@ addBot(data.answer)
 }
 }
 
+function finishTest(){
+
+let score = 0
+
+for(let i = 0; i < correctAnswers.length; i++){
+
+let user = document.getElementById("q"+i).value.trim().toUpperCase()
+
+if(user === correctAnswers[i]){
+score++
+}
+
+}
+
+addBot(`🏆 Результат: ${score} / ${correctAnswers.length} \n Правильные ответы: \n 1. ${correctAnswers[0]} \n 2. ${correctAnswers[1]} \n 3. ${correctAnswers[2]}`)
+}
+
 window.onload = () => loadPage("home")
