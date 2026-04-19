@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Datatype:wght@100..900&family=Itim&display=swap');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: 'Datatype', monospace;
@@ -7,31 +13,25 @@ body {
     color: white;
 }
 
-html, body {
-    width: 100%;
-    overflow-x: hidden;
-}
-
-.container {
+.layout {
     display: flex;
+    height: 100vh;
 }
 
 .sidebar {
-    width: 220px;
-    height: 100vh;
-    background: #0d0e11;
+    width: 250px;
+    background: #020617;
     padding: 20px;
-    font-size: 20px;
-    font-family: 'Itim', cursive;
-    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: 0.3s;
 }
 
 .sidebar div {
     padding: 12px;
-    margin: 10px 0;
     border-radius: 10px;
     cursor: pointer;
-    background-color: #1e293b;
 }
 
 .sidebar div:hover {
@@ -44,47 +44,38 @@ html, body {
     flex-direction: column;
 }
 
-.topbar {
+#topbar {
     display: flex;
+    gap: 10px;
     padding: 15px;
+    background: #020617;
 }
 
-.topbar input {
+#input {
+    flex: 1;
     padding: 10px;
     border-radius: 10px;
     border: none;
-    width: 1550px;
-}
-
-.topbar button {
-    margin-left: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    background: #2563eb;
-    border: none;
+    background: #1e293b;
     color: white;
+}
+
+#main {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
 }
 
 .chat {
-    padding: 20px;
-    font-size: 20px;
-}
-
-button{
-    border-radius: 10px;
-    background: #2563eb;
-    border: none;
-    color: white;
-    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .message {
-    max-width: 60%;
-    padding: 14px;
-    margin: 10px 0;
-    border-radius: 12px;
-    white-space: pre-line;
-    font-size: 20px;
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 .user {
@@ -96,99 +87,48 @@ button{
     background: #1e293b;
 }
 
-input {
-    margin-top: 5px;
-    padding: 8px;
-    border-radius: 8px;
-    border: none;
-    font-size: 20px;
-    background-color: #1e293b;
-    color:aliceblue;
+.burger {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    font-size: 24px;
+    z-index: 1000;
+    cursor: pointer;
 }
 
-footer{
-    padding-left: 200px;
-    background-color: #0c204e;
-    font-size: 20px;
-    text-align: center;
-}
+@media (max-width: 768px) {
 
-h1{
-    text-align: center;
-    font-size:50px;
-    background-color: #1e293b;
-}
-
-p{
-    font-size: 40px;
-    text-align: center;
-}
-
-.logo{
-    padding-left:40px;
-    font-size: 40px;
-    background-color: #0c204e;
-    height: 80px;
-    padding-top: 20px;
-}
-
-#q0, #q1, #q2{
-    background-color: white;
-    color: black;
-} 
-
-@media (max-width: 900px) {
-    .sidebar {
-        width: 180px;
-        padding: 15px;
+    .burger {
+        display: block;
     }
 
-    .message {
-        max-width: 85%;
-    }
-}
-
-@media (max-width: 600px) {
-
-    body {
+    .layout {
         flex-direction: column;
     }
 
     .sidebar {
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-around;
-        padding: 10px;
-        border-right: none;
-        border-bottom: 1px solid #1e293b;
+        position: fixed;
+        left: -100%;
+        top: 0;
+        height: 100%;
+        width: 220px;
+        z-index: 999;
     }
 
-    .sidebar div {
-        font-size: 12px;
-        padding: 8px;
+    .sidebar.active {
+        left: 0;
+    }
+
+    .content {
+        width: 100%;
     }
 
     #topbar {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-    }
-
-    #input {
-        font-size: 12px;
-        padding: 10px;
-    }
-
-    button {
-        padding: 8px 10px;
-        font-size: 12px;
+        padding-left: 50px;
     }
 
     .message {
-        max-width: 95%;
-        font-size: 14px;
+        max-width: 90%;
     }
-    
-    #main {
-        padding: 10px;
-    }
+}
