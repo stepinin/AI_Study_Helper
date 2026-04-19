@@ -9,32 +9,27 @@
 
 <body>
 
-<div class="header">
+<div class="burger" onclick="toggleMenu()">☰</div>
 
-    <div class="logo">AI Study Helper</div>
+<div class="layout">
 
-</div>
-
-<div class="container">
-
-    <div class="sidebar">
-        <div onclick="loadPage('home')">🏠 Главная</div>
+    <div class="sidebar" id="sidebar">
+        <div onclick="loadPage('home')">💬 Чат</div>
         <div onclick="loadPage('explain')">📚 Объяснение</div>
-        <div onclick="loadPage('test')">❓ Тесты</div>
+        <div onclick="loadPage('test')">❓ Тест</div>
     </div>
+
     <div class="content">
-
-        <div id="main"></div>
-
-        <div id="topbar" class="topbar" style="display:none;">
-            <input id="input" placeholder="Введите тему...">
-            <button onclick="send()">➤</button>
+        <div id="topbar">
+            <input id="input" placeholder="Введите сообщение...">
+            <button onclick="send()">Отправить</button>
         </div>
 
+        <div id="main"></div>
     </div>
 
 </div>
-
+    
 <script src="/static/script.js"></script> 
 
 </body>
