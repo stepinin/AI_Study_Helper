@@ -12,11 +12,11 @@ client = OpenAI(
 def ask_ai(prompt):
     try:
         response = client.chat.completions.create(
-            model="openrouter/elephant-alpha",
+            model="google/gemma-4-26b-a4b-it:free",
             messages=[
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=300
+            max_tokens=500
         )
 
         return response.choices[0].message.content
