@@ -24,7 +24,11 @@ def ask_ai(prompt):
     except Exception as e:
         print("ERROR:", e)
         return "❌ Ошибка ИИ"
-      
+        
+@app.route("/") 
+def home():
+    return render_template("index.html")     
+    
 @app.route("/chat", methods=["POST"])
 def chat():
     text = request.json.get("message", "")
