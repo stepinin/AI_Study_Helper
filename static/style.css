@@ -75,7 +75,7 @@ body {
 .message {
     max-width: 70%;
     padding: 10px;
-    margin: 10px;
+    margin-top: 10px;
     border-radius: 10px;
 }
 
@@ -98,15 +98,9 @@ body {
     cursor: pointer;
 }
 
-footer{
-    background-color: #0c204e;
-    font-size: 20px;
-    text-align: center;
-}
-
 h1{
     text-align: center;
-    font-size:35px;
+    font-size:30px;
     background-color: #1e293b;
 }
 
