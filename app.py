@@ -34,9 +34,7 @@ def chat():
 @app.route("/explain", methods=["POST"])
 def explain():
     topic = request.json.get("topic", "")
-    answer = ask_ai(f"Объясни тему: {topic}
-Пиши БЕЗ символов # и *
-")
+    answer = ask_ai(f"Объясни тему(Пиши БЕЗ символов # и *): {topic}")
     return jsonify({"answer": answer})
 
 @app.route("/test", methods=["POST"])
