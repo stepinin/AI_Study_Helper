@@ -19,18 +19,13 @@ body {
 }
 
 .sidebar {
-    position: fixed;
-    left: -100%;
-    top: 0;
-    height: 100%;
-    width: 220px;
+    width: 250px;
     background: #020617;
-    transition: 0.3s;
-    z-index: 999;
+    padding: 20px;
 }
 
-.sidebar.active {
-    left: 0;
+.burger {
+    display: none;
 }
 
 .sidebar div {
@@ -93,15 +88,6 @@ body {
     background: #1e293b;
 }
 
-.burger {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    font-size: 26px;
-    cursor: pointer;
-    z-index: 1000;
-}
-
 h1{
     text-align: center;
     font-size:30px;
@@ -148,12 +134,14 @@ button{
 
     .burger {
         display: block;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        font-size: 26px;
+        z-index: 1000;
+        cursor: pointer;
     }
-
-    .layout {
-        flex-direction: column;
-    }
-
+    
     .sidebar {
         position: fixed;
         left: -100%;
@@ -161,6 +149,7 @@ button{
         height: 100%;
         width: 220px;
         z-index: 999;
+        transition: 0.3s;
     }
 
     .sidebar.active {
@@ -173,6 +162,10 @@ button{
 
     #topbar {
         padding-left: 50px;
+    }
+
+    .layout {
+        flex-direction: column;
     }
 
     .message {
