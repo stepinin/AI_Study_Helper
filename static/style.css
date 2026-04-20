@@ -131,7 +131,16 @@ button{
 }
     
 @media (max-width: 768px) {
+    .layout {
+        flex-direction: column;
+    }
 
+    .message {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 1024px) {
     .burger {
         display: block;
         position: fixed;
@@ -141,7 +150,7 @@ button{
         z-index: 1000;
         cursor: pointer;
     }
-    
+
     .sidebar {
         position: fixed;
         left: -100%;
@@ -162,13 +171,5 @@ button{
 
     #topbar {
         padding-left: 50px;
-    }
-
-    .layout {
-        flex-direction: column;
-    }
-
-    .message {
-        max-width: 90%;
     }
 }
