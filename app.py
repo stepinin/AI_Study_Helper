@@ -16,7 +16,6 @@ def ask_ai(prompt):
             messages=[
                 {"role": "user", "content": prompt}
             ],
-            max_tokens=300
         )
 
         return response.choices[0].message.content
