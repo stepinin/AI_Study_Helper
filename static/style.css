@@ -19,13 +19,18 @@ body {
 }
 
 .sidebar {
-    width: 250px;
+    position: fixed;
+    left: -100%;
+    top: 0;
+    height: 100%;
+    width: 220px;
     background: #020617;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
     transition: 0.3s;
+    z-index: 999;
+}
+
+.sidebar.active {
+    left: 0;
 }
 
 .sidebar div {
@@ -89,13 +94,12 @@ body {
 }
 
 .burger {
-    display: none;
     position: fixed;
     top: 10px;
     left: 10px;
-    font-size: 24px;
-    z-index: 1000;
+    font-size: 26px;
     cursor: pointer;
+    z-index: 1000;
 }
 
 h1{
