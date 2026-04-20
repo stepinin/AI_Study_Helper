@@ -106,23 +106,15 @@ button{
     color: black;
 } 
 
-.logo{
-    padding-left:40px;
-    font-size: 40px;
-    background-color: #0c204e;
-    height: 80px;
-    padding-top: 20px;
-}
-
-.bx-wrapper {
+header .bx-wrapper {
    width: 775px;
 }
 
-.bx-next{
+header .bx-next{
     visibility: hidden;
 }
 
-.bx-prev{
+header .bx-prev{
     visibility: hidden;
 }
 
