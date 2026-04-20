@@ -119,16 +119,6 @@ button{
     display: none;
 }
     
-@media (max-width: 768px) {
-    .layout {
-        flex-direction: column;
-    }
-
-    .message {
-        max-width: 90%;
-    }
-}
-
 .burger {
     display: none;
     }
@@ -138,6 +128,16 @@ button{
     background: #020617;
     padding: 20px;
     }
+    
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column;
+    }
+
+    .message {
+        max-width: 90%;
+    }
+}
 
     
 @media (max-width: 1024px) {
