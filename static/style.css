@@ -128,9 +128,8 @@ button{
         max-width: 90%;
     }
 }
-    
-@media (max-width: 3000px){
-    .burger {
+
+.burger {
     display: none;
     }
 
@@ -139,7 +138,7 @@ button{
     background: #020617;
     padding: 20px;
     }
-}
+
     
 @media (max-width: 1024px) {
     .burger {
