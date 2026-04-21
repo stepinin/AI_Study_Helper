@@ -101,23 +101,6 @@ button{
     background-color: white;
     color: black;
 } 
-
-.bx-wrapper {
-    width: 775px;
-    background-color: #0f172a;
-}
-
-.bx-next{
-    display: none;
-}
-
-.bx-prev{
-   display: none;
-}
-
-.bx-pager-link{
-    display: none;
-}
     
 .burger {
     display: none;
@@ -139,7 +122,6 @@ button{
     }
 }
 
-    
 @media (max-width: 1024px) {
     .burger {
         display: block;
