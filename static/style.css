@@ -102,15 +102,44 @@ button{
     color: black;
 } 
     
-.burger {
-    display: none;
-    }
-
-.sidebar {
+.sidebar{
+    position: fixed;
+    left: -250px;
+    top: 0;
     width: 250px;
-    background: #020617;
-    padding: 20px;
-    }
+    height: 100%;
+    background: #111;
+    padding-top: 60px;
+    transition: 0.3s;
+}
+
+.sidebar a{
+    display: block;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.sidebar.active{
+    left: 0;
+}
+
+.topbar{
+    display: flex;
+    align-items: center;
+    background: #222;
+    color: white;
+    padding: 10px;
+}
+
+#burger{
+    font-size: 24px;
+    margin-right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
     
 @media (max-width: 768px) {
     .layout {
@@ -122,36 +151,11 @@ button{
     }
 }
 
-@media (max-width: 1024px) {
-    .burger {
-        display: block;
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        font-size: 26px;
-        z-index: 1000;
-        cursor: pointer;
+@media (min-width: 768px){
+    #burger{
+        display: none;
     }
-
-    .sidebar {
-        position: fixed;
-        left: -100%;
-        top: 0;
-        height: 100%;
-        width: 220px;
-        z-index: 999;
-        transition: 0.3s;
-    }
-
-    .sidebar.active {
+    .sidebar{
         left: 0;
-    }
-
-    .content {
-        width: 100%;
-    }
-
-    #topbar {
-        padding-left: 50px;
     }
 }
