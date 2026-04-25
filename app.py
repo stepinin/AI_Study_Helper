@@ -12,7 +12,7 @@ client = OpenAI(
 def ask_ai(prompt):
     try:
         response = client.chat.completions.create(
-            model="google/gemma-4-31b-it:free",
+            model="baidu/qianfan-ocr-fast:free",
             messages=[
                 {"role": "user", "content": prompt}
             ],
