@@ -3,18 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 <link rel="stylesheet" href="/static/style.css">
 <title>AI Study Helper</title>
 </head>
     
 <header>
-    <h1>AI Study Helper</h1>
+    <div class="slider">
+        <img src="/static/logo1.png">
+        <img src="/static/logo2.png">
+        <img src="/static/logo3.png">
+    </div>
 </header>
-
+<div class="burger" onclick="toggleMenu()">☰</div>
 
 <div class="layout">
 
-    <div id="sidebar" class="sidebar" >
+    <div class="sidebar" id="sidebar">
         <div onclick="loadPage('home')">💬 Чат</div>
         <div onclick="loadPage('explain')">📚 Объяснение</div>
         <div onclick="loadPage('test')">❓ Тест</div>
