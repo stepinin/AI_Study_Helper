@@ -1,6 +1,15 @@
 let mode = "home"
 let correctAnswers = []
 
+$(document).ready(function () {
+    $('.slider').bxSlider({
+        captions: true, 
+        nextText: '',
+        prevText: '',
+        easing: 'jswing'
+    });
+});
+
 function loadPage(page){
 
 mode = page
@@ -129,15 +138,11 @@ btn.style.display = "none"
 addBot(`🏆 Результат: ${score} / ${correctAnswers.length} \n Правильные ответы: \n 1. ${correctAnswers[0]} \n 2. ${correctAnswers[1]} \n 3. ${correctAnswers[2]}`)
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    const burger = document.getElementById("burger")
-    const sidebar = document.getElementById("sidebar")
-
-    burger.addEventListener("click", () => {
-        sidebar.classList.toggle("active")
-    })
-
-})
+function toggleMenu(){
+    
+let sidebar = document.getElementById("sidebar")
+sidebar.classList.toggle("active")
+    
+}
 
 window.onload = () => loadPage("home")
