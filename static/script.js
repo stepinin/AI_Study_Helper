@@ -88,9 +88,7 @@ async function send(){
         data.questions.forEach((q,i)=>{
         addBot(`${q}<br><input id="q${i}" placeholder="A/B/C/D">`)
         })
-        
         addBot(`<button id="finishBtn" onclick="finishTest()">Завершить тест</button>`)
-        
     }
     else {
     addBot(data.answer)
@@ -100,14 +98,14 @@ async function send(){
 function finishTest() {
     let score = 0
     for(let i = 0; i < correctAnswers.length; i++){
-    let user = document.getElementById("q"+i).value.trim().toUpperCase()
-    if(user === correctAnswers[i]){
-    score++
-    }
+        let user = document.getElementById("q"+i).value.trim().toUpperCase()
+        if(user === correctAnswers[i]){
+            score++
+        }
     }
     let btn = document.getElementById("finishBtn")
     if(btn){
-    btn.style.display = "none"
+        btn.style.display = "none"
     }
     addBot(`🏆 Результат: ${score} / ${correctAnswers.length} \n Правильные ответы: \n 1. ${correctAnswers[0]} \n 2. ${correctAnswers[1]} \n 3. ${correctAnswers[2]}`)
 }
